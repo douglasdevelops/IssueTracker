@@ -1,0 +1,16 @@
+<ul class="listgroup" *ngIf="loaded && issues?.length > 0">
+  <li *ngFor="let issue of issues" [class.list-group-item-secondary]="selectedIssue === issue" class="list-group-item d-flex justify-content-between align-items-center">
+    <a (click)="onSelect(issue)" href="#">{{ issue.text }}</a>
+    <span class="log-date">{{ issue.date | date:  'short' }}</span>
+    <i (click)="onDelete(issue)" class="fa fa-remove"></i>
+  </li>  
+</ul>
+
+<div *ngIf="loaded && issues.length == 0">
+  <h5>There Are No Issues In The System</h5>
+</div>
+
+
+<div *ngIf="!loaded">
+  <h5>Loading...</h5>
+</div>
